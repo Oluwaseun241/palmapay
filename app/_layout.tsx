@@ -11,16 +11,15 @@ import React, { useEffect } from "react";
 import * as SplashScreen from "expo-splash-screen";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
+import CustomSplashScreen from "@/app/onboarding/Splash";
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
+  let [loaded] = useFonts({
     Neue: require("../assets/fonts/neue/NeueMontreal-Bold.otf"),
   });
 
+  loaded = false;
   useEffect(() => {
     if (loaded) {
       SplashScreen.hideAsync();
@@ -28,14 +27,13 @@ export default function RootLayout() {
   }, [loaded]);
 
   if (!loaded) {
-    return null;
+    return <CustomSplashScreen />;
   }
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
       </Stack>
     </ThemeProvider>
   );
