@@ -16,7 +16,7 @@ import CustomSplashScreen from "@/app/onboarding/Splash";
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   let [loaded] = useFonts({
-    Neue: require("../assets/fonts/neue/NeueMontreal-Bold.otf"),
+    Neue: require("../assets/fonts/neue/NeueMontreal-Regular.otf"),
   });
 
   loaded = false;
