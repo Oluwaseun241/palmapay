@@ -3,12 +3,12 @@ import {
   DefaultTheme,
   ThemeProvider,
 } from "@react-navigation/native";
-import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
-import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
-import "react-native-reanimated";
 import "@/assets/global.css";
+import "react-native-reanimated";
+import { Stack } from "expo-router";
+import { useFonts } from "expo-font";
+import React, { useEffect } from "react";
+import * as SplashScreen from "expo-splash-screen";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
 
@@ -18,7 +18,7 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
-    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+    Neue: require("../assets/fonts/neue/NeueMontreal-Bold.otf"),
   });
 
   useEffect(() => {
