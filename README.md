@@ -1,4 +1,5 @@
 # Palmapay 👋
 
 cooking...
-`Note i'm using bun`
+**Note i'm using bun**
+use `bun install`
