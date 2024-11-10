@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import { Animated, Image, SafeAreaView, Text } from "react-native";
+import { Animated, SafeAreaView, Text } from "react-native";
+import Icon from "@/assets/images/icon.svg";
 
 export default function CustomSplashScreen() {
   const imageFadeAnim = useRef(new Animated.Value(0)).current;
@@ -34,11 +35,7 @@ export default function CustomSplashScreen() {
           transform: [{ translateX: combinedSlideAnim }],
         }}
       >
-        <Image
-          source={require("@/assets/images/icon.svg")}
-          resizeMode="center"
-          className="w-[52] h-[52]"
-        />
+        <Icon width={52} height={52} />
       </Animated.View>
       <Animated.Text
         style={{
@@ -47,7 +44,7 @@ export default function CustomSplashScreen() {
             { translateX: combinedSlideAnim },
           ],
         }}
-        className="font-[Neue] font-normal text-6xl"
+        className="font-['Neue'] text-6xl"
       >
         palma.pay
       </Animated.Text>

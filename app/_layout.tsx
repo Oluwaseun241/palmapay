@@ -9,9 +9,8 @@ import { Stack } from "expo-router";
 import { useFonts } from "expo-font";
 import React, { useEffect } from "react";
 import * as SplashScreen from "expo-splash-screen";
-
-import { useColorScheme } from "@/hooks/useColorScheme";
 import { Splash } from "@/app/onboarding";
+import { useColorScheme } from "@/hooks/useColorScheme";
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
