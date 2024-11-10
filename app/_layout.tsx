@@ -11,7 +11,7 @@ import React, { useEffect } from "react";
 import * as SplashScreen from "expo-splash-screen";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
-import CustomSplashScreen from "@/app/onboarding/Splash";
+import { Splash } from "@/app/onboarding";
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -27,7 +27,7 @@ export default function RootLayout() {
   }, [loaded]);
 
   if (!loaded) {
-    return <CustomSplashScreen />;
+    return <Splash />;
   }
 
   return (

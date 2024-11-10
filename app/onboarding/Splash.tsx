@@ -35,7 +35,7 @@ export default function CustomSplashScreen() {
         }}
       >
         <Image
-          source={require("@/assets/images/icon.png")}
+          source={require("@/assets/images/icon.svg")}
           resizeMode="center"
           className="w-[52] h-[52]"
         />
