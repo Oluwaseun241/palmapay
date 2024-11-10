@@ -7,6 +7,12 @@ module.exports = {
       fontFamily: {
         Neue: ["NeueMontreal-Regular"],
       },
+      colors: {
+        primary: {
+          DEFAULT: "#FFC801",
+          100: "",
+        },
+      },
     },
   },
   plugins: [],
