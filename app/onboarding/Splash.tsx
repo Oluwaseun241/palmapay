@@ -4,35 +4,46 @@ import Icon from "@/assets/images/icon.svg";
 
 export default function CustomSplashScreen() {
   const imageFadeAnim = useRef(new Animated.Value(0)).current;
+  const imageSlideAnim = useRef(new Animated.Value(100)).current;
   const textSlideAnim = useRef(new Animated.Value(300)).current;
   const combinedSlideAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    Animated.timing(imageFadeAnim, {
-      toValue: 1,
-      duration: 800,
-      useNativeDriver: true,
-    }).start(() => {
+    Animated.parallel([
+      Animated.timing(imageFadeAnim, {
+        toValue: 1,
+        duration: 800,
+        useNativeDriver: true,
+      }),
+      Animated.timing(imageSlideAnim, {
+        toValue: 0,
+        duration: 1600,
+        useNativeDriver: true,
+      }),
+    ]).start(() => {
       Animated.timing(textSlideAnim, {
         toValue: 0,
         duration: 1000,
         useNativeDriver: true,
       }).start(() => {
         Animated.timing(combinedSlideAnim, {
-          toValue: -30,
+          toValue: 0,
           duration: 500,
           useNativeDriver: true,
         }).start();
       });
     });
-  }, [imageFadeAnim, textSlideAnim, combinedSlideAnim]);
+  }, []);
 
   return (
     <SafeAreaView className="flex-1 flex-row gap-3 bg-[#FFC801] items-center justify-center">
       <Animated.View
         style={{
           opacity: imageFadeAnim,
-          transform: [{ translateX: combinedSlideAnim }],
+          transform: [
+            { translateX: imageSlideAnim },
+            { translateX: combinedSlideAnim },
+          ],
         }}
       >
         <Icon width={52} height={52} />

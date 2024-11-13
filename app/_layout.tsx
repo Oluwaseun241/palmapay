@@ -7,23 +7,27 @@ import "@/assets/global.css";
 import "react-native-reanimated";
 import { Stack } from "expo-router";
 import { useFonts } from "expo-font";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import * as SplashScreen from "expo-splash-screen";
 import { Splash } from "@/app/onboarding";
 import { useColorScheme } from "@/hooks/useColorScheme";
 
 export default function RootLayout() {
+  const [loaded, setLoaded] = useState(false);
   const colorScheme = useColorScheme();
-  let [loaded] = useFonts({
+  let [fontsLoaded] = useFonts({
     Neue: require("../assets/fonts/neue/NeueMontreal-Regular.otf"),
   });
 
-  loaded = false;
   useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
+    const timeout = setTimeout(() => {
+      if (fontsLoaded) {
+        setLoaded(true);
+        SplashScreen.hideAsync();
+      }
+    }, 3500);
+    return () => clearTimeout(timeout);
+  }, [fontsLoaded]);
 
   if (!loaded) {
     return <Splash />;
