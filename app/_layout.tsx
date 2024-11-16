@@ -5,11 +5,11 @@ import {
 } from "@react-navigation/native";
 import "@/assets/global.css";
 import "react-native-reanimated";
-import { Stack } from "expo-router";
+import { Stack, router } from "expo-router";
 import { useFonts } from "expo-font";
 import React, { useEffect, useState } from "react";
 import * as SplashScreen from "expo-splash-screen";
-import { Splash } from "@/app/onboarding";
+import CustomSplashScreen from "@/components/Splash";
 import { useColorScheme } from "@/hooks/useColorScheme";
 
 export default function RootLayout() {
@@ -30,14 +30,14 @@ export default function RootLayout() {
   }, [fontsLoaded]);
 
   if (!loaded) {
-    return <Splash />;
+    return <CustomSplashScreen />;
   }
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="onboarding/onboarding" />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="onboarding" options={{ headerShown: false }} />
       </Stack>
     </ThemeProvider>
   );

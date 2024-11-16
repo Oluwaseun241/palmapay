@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Animated, SafeAreaView, Text } from "react-native";
+import { Animated, SafeAreaView } from "react-native";
 import Icon from "@/assets/images/icon.svg";
 
 export default function CustomSplashScreen() {

@@ -1,10 +1,10 @@
 import React from "react";
 import { SafeAreaView, Text } from "react-native";
 
-export default function Onboarding() {
+export default function HomeScreen() {
   return (
     <SafeAreaView>
-      <Text>Yoo</Text>
+      <Text>Home Screen</Text>
     </SafeAreaView>
   );
-}
+} 
