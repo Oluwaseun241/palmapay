@@ -36,7 +36,7 @@ export default function CustomSplashScreen() {
   }, []);
 
   return (
-    <SafeAreaView className="flex-1 flex-row gap-3 bg-[#FFC801] items-center justify-center">
+    <SafeAreaView className="flex-1 flex-row gap-3 bg-primary items-center justify-center">
       <Animated.View
         style={{
           opacity: imageFadeAnim,
