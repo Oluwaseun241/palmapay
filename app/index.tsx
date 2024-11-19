@@ -26,6 +26,6 @@ export default function Index() {
   if (isFirstLaunch) {
     return <Redirect href="/onboarding/welcome-1" />;
   }
-
-  return <Redirect href="/(tabs)/home" />;
+  // "/(tabs)/home"
+  return <Redirect href="/signup/bio-data" />;
 }

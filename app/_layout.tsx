@@ -16,7 +16,8 @@ export default function RootLayout() {
   const [loaded, setLoaded] = useState(false);
   const colorScheme = useColorScheme();
   let [fontsLoaded] = useFonts({
-    Neue: require("../assets/fonts/neue/NeueMontreal-Regular.otf"),
+    Neue: require("@/assets/fonts/neue/NeueMontreal-Regular.otf"),
+    NeueBold: require("@/assets/fonts/neue/NeueMontreal-Bold.otf"),
   });
 
   useEffect(() => {
@@ -36,8 +37,9 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="onboarding" options={{ headerShown: false }} />
+        <Stack.Screen name="signup" options={{ headerShown: false }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack>
     </ThemeProvider>
   );
