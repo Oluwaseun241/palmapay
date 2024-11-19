@@ -31,7 +31,7 @@ export default function ThirdScreen() {
         <View className="mt-14 mb-20 items-center justify-center">
           <Tap />
         </View>
-        <View className="mt-4 mb-2">
+        <View className="mt-4 mb-4">
           <Text className="font-['Neue'] font-normal text-4xl ml-12">
             <View className="bg-[#FC6710] w-44 h-12 p-1 rounded-md border-b-2 border-r-2 shadow">
               <Text className="font-['Neue'] font-normal text-4xl text-center">
@@ -46,7 +46,7 @@ export default function ThirdScreen() {
           <View />
           <TouchableOpacity
             onPress={() => finishOnboarding()}
-            className="p-2 bg-[#FFFFFF54] w-20 h-12 items-center rounded-full"
+            className="p-2 bg-[#FFFFFF54] w-24 h-12 items-center rounded-full"
           >
             <FontAwesome6 name="arrow-right-long" size={24} color="#C59A00" />
           </TouchableOpacity>

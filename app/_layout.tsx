@@ -5,7 +5,7 @@ import {
 } from "@react-navigation/native";
 import "@/assets/global.css";
 import "react-native-reanimated";
-import { Stack, router } from "expo-router";
+import { Stack } from "expo-router";
 import { useFonts } from "expo-font";
 import React, { useEffect, useState } from "react";
 import * as SplashScreen from "expo-splash-screen";

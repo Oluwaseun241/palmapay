@@ -41,7 +41,7 @@ export default function FirstScreen() {
           <View />
           <TouchableOpacity
             onPress={() => router.navigate("/onboarding/welcome-2")}
-            className="p-2 bg-[#FFFFFF54] w-20 h-12 items-center rounded-full"
+            className="p-2 bg-[#FFFFFF54] w-24 h-12 items-center rounded-full"
           >
             <FontAwesome6 name="arrow-right-long" size={24} color="#C59A00" />
           </TouchableOpacity>

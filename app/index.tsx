@@ -12,7 +12,7 @@ export default function Index() {
 
   const checkIfFirstLaunch = async () => {
     try {
-      const hasLaunched = await AsyncStorage.getItem("hasLaunched");
+      const hasLaunched = await AsyncStorage.getItem("hasLauncheds");
       setIsFirstLaunch(hasLaunched === null);
     } catch (error) {
       setIsFirstLaunch(true);

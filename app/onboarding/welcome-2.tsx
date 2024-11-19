@@ -26,7 +26,7 @@ export default function SecondScreen() {
         <View className="items-center justify-center">
           <Toss height={490} />
         </View>
-        <View className="mt-4 mb-2">
+        <View className="mt-4 mb-4">
           <Text className="font-['Neue'] font-normal text-4xl ml-12">
             <View className="bg-[#FC6710] w-44 h-12 p-1 rounded-md border-b-2 border-r-2 shadow">
               <Text className="font-['Neue'] font-normal text-4xl text-center">
@@ -36,12 +36,12 @@ export default function SecondScreen() {
             gives{"\n"}you the freedom{"\n"}over your funds!
           </Text>
         </View>
-        <View className="flex-row justify-around">
+        <View className="flex-row justify-around mt-10">
           <View />
           <View />
           <TouchableOpacity
             onPress={() => router.navigate("/onboarding/welcome-3")}
-            className="p-2 bg-[#FFFFFF54] w-20 h-12 items-center rounded-full"
+            className="p-2 bg-[#FFFFFF54] w-24 h-12 items-center rounded-full"
           >
             <FontAwesome6 name="arrow-right-long" size={24} color="#C59A00" />
           </TouchableOpacity>

@@ -1,6 +1,12 @@
 import React from "react";
-import { View } from "react-native";
+import { TextInput, View } from "react-native";
 
 export default function SignupForm() {
-  return <View></View>;
+  return (
+    <View>
+      <View>
+        <TextInput placeholder="First Name" />
+      </View>
+    </View>
+  );
 }
