@@ -16,7 +16,7 @@ export default function SecondScreen() {
   return (
     <View className="flex-1 bg-primary">
       <ImageBackground
-        source={require("@/assets/images/test.png")}
+        source={require("@/assets/images/background.png")}
         width={640}
         height={640}
       >
