@@ -33,8 +33,9 @@ export default function SignupForm() {
   const [errors, setErrors] = useState<Partial<FormData>>({});
 
   const handleSubmit = () => {
-    console.log(formData);
-    router.push("/signup/phone-number");
+    router.push({
+      pathname: "/signup/phone-number",
+    });
   };
 
   return (

@@ -21,13 +21,14 @@ export default function RootLayout() {
   });
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
+    const loadApp = async () => {
       if (fontsLoaded) {
+        await SplashScreen.hideAsync();
         setLoaded(true);
-        SplashScreen.hideAsync();
       }
-    }, 3500);
-    return () => clearTimeout(timeout);
+    };
+
+    loadApp();
   }, [fontsLoaded]);
 
   if (!loaded) {
