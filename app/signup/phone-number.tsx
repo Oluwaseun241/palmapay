@@ -21,7 +21,6 @@ interface Country {
   dialCode: string;
 }
 
-// Simplified country list formatting
 const countryList: Country[] = countries.getCodes().map((code) => ({
   code,
   name: countries.getName(code) || "",
@@ -48,10 +47,8 @@ export default function PhoneNumberInput() {
   const inputRef = useRef<TextInput>(null);
 
   const formatPhoneNumber = (text: string) => {
-    // Remove any non-digit characters
     const cleaned = text.replace(/\D/g, "");
 
-    // Basic formatting for US numbers (customize based on country)
     let formatted = cleaned;
     if (selectedCountry.code === "US") {
       if (cleaned.length > 6) {
@@ -98,7 +95,6 @@ export default function PhoneNumberInput() {
   return (
     <SafeAreaView className="flex-1 bg-white">
       <View className="px-4 pt-4 flex-1">
-        {/* Back Button */}
         <TouchableOpacity onPress={() => router.back()} className="mb-6">
           <ArrowLeft />
         </TouchableOpacity>
