@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       fontFamily: {
         Neue: ["NeueMontreal-Regular"],
+        NeueBold: ["NeueMontreal-Bold"],
       },
       colors: {
         primary: {

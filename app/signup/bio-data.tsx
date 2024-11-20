@@ -1,29 +1,35 @@
-import SignupForm from "@/components/SignupForm";
 import React from "react";
-import { SafeAreaView, View, Text } from "react-native";
+import SignupForm from "@/components/SignupForm";
+import { SafeAreaView, View, Text, ScrollView } from "react-native";
 
 export default function BiodataScreen() {
   return (
-    <SafeAreaView className="flex-1 dark: bg-white">
-      <View className="ml-5 pt-4">
-        <View className="w-[231px] gap-1">
-          <Text className="font-['NeueBold'] font-bold text-[24px] leading-7 text-[#5F5F5F]">
-            Let's get to know you.
-          </Text>
-          <Text className="font['Neue'] text-[#5F5F5F] text-[9px] leading-3">
-            Your personal data is secure in compliance with strict data {"\n"}
-            protections regulations
-          </Text>
-        </View>
-        <View className="mt-3">
-          <Text className="text-[#5F5F5F] font-['Neue'] font-normal text-sm">
-            Have an account? <Text className="text-[#FC6710]">Login</Text>
-          </Text>
-        </View>
+    <SafeAreaView className="flex-1 bg-white">
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ flexGrow: 1 }}
+        className="px-4"
+      >
+        <View className="pt-4 pb-8">
+          <View className="mb-2">
+            <Text className="font-NeueBold text-2xl leading-[28.2px] text-[#5F5F5F]">
+              Let's get to know you.
+            </Text>
+            <Text className="font-Neue text-xs leading-[10.57px] max-w-[222px] text-[#5F5F5F] mt-2">
+              Your personal data is secure in compliance with strict data
+              protection regulations.
+            </Text>
+          </View>
 
-        {/* Signup component */}
-        <SignupForm />
-      </View>
+          <View className="mb-6">
+            <Text className="text-[#5F5F5F] leading-[14.1px] font-Neue text-sm">
+              Have an account? <Text className="text-[#F6671E]">Login</Text>
+            </Text>
+          </View>
+
+          <SignupForm />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
