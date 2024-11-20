@@ -1,6 +1,7 @@
+import { router } from "expo-router";
 import React, { useState } from "react";
+import { FontAwesome6, Ionicons } from "@expo/vector-icons";
 import { View, TextInput, Text, TouchableOpacity } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 
 interface FormData {
   firstName: string;
@@ -31,10 +32,9 @@ export default function SignupForm() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [errors, setErrors] = useState<Partial<FormData>>({});
 
-  const RequiredStar = () => <Text className="text-red-500">*</Text>;
-
   const handleSubmit = () => {
     console.log(formData);
+    router.push("/signup/phone-number");
   };
 
   return (
@@ -42,9 +42,7 @@ export default function SignupForm() {
       {/* Names Section */}
       <View className="flex-row gap-2">
         <View className="flex-1">
-          <Text className="mb-1 text-[#878787]">
-            First Name <RequiredStar />
-          </Text>
+          <Text className="mb-1 text-[#878787]">First Name</Text>
           <TextInput
             placeholder="First Name"
             placeholderTextColor="#878787"
@@ -56,9 +54,7 @@ export default function SignupForm() {
           />
         </View>
         <View className="flex-1">
-          <Text className="mb-1 text-[#878787]">
-            Last Name <RequiredStar />
-          </Text>
+          <Text className="mb-1 text-[#878787]">Last Name</Text>
           <TextInput
             placeholder="Last Name"
             placeholderTextColor="#878787"
@@ -87,9 +83,7 @@ export default function SignupForm() {
 
       {/* Username */}
       <View>
-        <Text className="mb-1 text-[#878787]">
-          Username <RequiredStar />
-        </Text>
+        <Text className="mb-1 text-[#878787]">Username</Text>
         <TextInput
           placeholder="Username"
           placeholderTextColor="#878787"
@@ -101,9 +95,7 @@ export default function SignupForm() {
 
       {/* Date of Birth */}
       <View>
-        <Text className="mb-1 text-[#878787]">
-          Date of Birth <RequiredStar />
-        </Text>
+        <Text className="mb-1 text-[#878787]">Date of Birth</Text>
         <TextInput
           placeholder="DD/MM/YYYY"
           placeholderTextColor="#878787"
@@ -118,9 +110,7 @@ export default function SignupForm() {
 
       {/* Gender */}
       <View>
-        <Text className="mb-1 text-[#878787]">
-          Gender <RequiredStar />
-        </Text>
+        <Text className="mb-1 text-[#878787]">Gender</Text>
         <TextInput
           placeholder="Gender"
           placeholderTextColor="#878787"
@@ -132,9 +122,7 @@ export default function SignupForm() {
 
       {/* Password */}
       <View>
-        <Text className="mb-1 text-[#878787]">
-          Create Password <RequiredStar />
-        </Text>
+        <Text className="mb-1 text-[#878787]">Create Password</Text>
         <View className="relative">
           <TextInput
             placeholder="Create Password"
@@ -186,9 +174,7 @@ export default function SignupForm() {
 
       {/* Confirm Password */}
       <View>
-        <Text className="mb-1 text-[#878787]">
-          Confirm Password <RequiredStar />
-        </Text>
+        <Text className="mb-1 text-[#878787]">Confirm Password</Text>
         <View className="relative">
           <TextInput
             placeholder="Confirm Password"
@@ -228,13 +214,12 @@ export default function SignupForm() {
         />
       </View>
 
-      {/* Submit Button */}
       <TouchableOpacity
         onPress={handleSubmit}
-        className="bg-[#FFC801] rounded-[16px] py-4 mt-6 mb-4"
+        className="bg-[#FFC801]/10 rounded-[16px] py-4 mt-6 mb-4"
       >
         <Text className="text-center text-black font-bold text-lg">
-          Create Account
+          <FontAwesome6 name="arrow-right-long" size={24} color="#000000" />
         </Text>
       </TouchableOpacity>
     </View>
