@@ -105,7 +105,7 @@ export default function SignupForm() {
             setFormData({ ...formData, dateOfBirth: text })
           }
           className="border-[0.5px] text-black border-[#0000004A] rounded-[16px] px-[14px] py-4 text-base"
-          keyboardType="numeric"
+          keyboardType="numbers-and-punctuation"
         />
       </View>
 

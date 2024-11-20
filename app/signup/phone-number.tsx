@@ -39,7 +39,7 @@ const countryList: Country[] = countries.getCodes().map((code) => ({
 export default function PhoneNumberInput() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [selectedCountry, setSelectedCountry] = useState<Country>(
-    countryList.find((c) => c.code === "NG") || countryList[0]
+    countryList.find((c) => c.code === "NG") || countryList[0],
   );
   const [showCountryPicker, setShowCountryPicker] = useState(false);
   const [isValid, setIsValid] = useState(true);
@@ -54,7 +54,7 @@ export default function PhoneNumberInput() {
       if (cleaned.length > 6) {
         formatted = `${cleaned.slice(0, 3)}-${cleaned.slice(
           3,
-          6
+          6,
         )}-${cleaned.slice(6)}`;
       } else if (cleaned.length > 3) {
         formatted = `${cleaned.slice(0, 3)}-${cleaned.slice(3)}`;
@@ -152,7 +152,7 @@ export default function PhoneNumberInput() {
           <TouchableOpacity
             onPress={handleSubmit}
             disabled={isLoading}
-            className="self-center bg-gray-100 rounded-full w-14 h-14 items-center justify-center"
+            className="self-center bg-gray-100 rounded-full w-[78px] h-12 items-center justify-center"
           >
             {isLoading ? (
               <ActivityIndicator color="#FFC801" />
@@ -161,7 +161,7 @@ export default function PhoneNumberInput() {
                 <View />
                 <View />
                 <TouchableOpacity
-                  onPress={() => router.navigate("/onboarding/welcome-2")}
+                  onPress={() => router.navigate("/signup/verify")}
                   className="p-2 bg-[#FFFFFF54] w-24 h-12 items-center rounded-full"
                 >
                   <FontAwesome6

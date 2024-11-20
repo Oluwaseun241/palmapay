@@ -1,16 +1,21 @@
 import React from "react";
-import { View, Text, Pressable, StyleSheet } from "react-native";
-import { Link } from "expo-router";
+import {
+  View,
+  Text,
+  Pressable,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
+import { Link, router } from "expo-router";
 import { ArrowLeft } from "@/components/svgs";
+import { FontAwesome6 } from "@expo/vector-icons";
 
 export default function VerifyCode() {
   return (
     <View style={styles.container}>
-      <Link href="../" style={styles.backButton}>
-        <Text style={styles.backButtonText}>
-          <ArrowLeft />
-        </Text>
-      </Link>
+      <TouchableOpacity onPress={() => router.back()} className="mb-6">
+        <ArrowLeft />
+      </TouchableOpacity>
 
       <View style={styles.messageContainer}>
         <Text style={styles.messageText}>
@@ -18,7 +23,7 @@ export default function VerifyCode() {
           ending with <Text style={styles.boldText}>3442</Text>
         </Text>
 
-        <Pressable>
+        <Pressable onPress={() => router.back()}>
           <Text style={styles.editNumber}>Edit Phone number</Text>
         </Pressable>
       </View>
@@ -32,9 +37,12 @@ export default function VerifyCode() {
 
       {/* Continue Button */}
       <View style={styles.buttonContainer}>
-        <Pressable style={styles.continueButton}>
-          <Text style={styles.continueButtonText}>→</Text>
-        </Pressable>
+        <TouchableOpacity
+          onPress={() => router.navigate("/signin")}
+          style={styles.continueButton}
+        >
+          <FontAwesome6 name="arrow-right-long" size={24} color="#C59A00" />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -56,7 +64,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   messageContainer: {
-    marginTop: 40,
+    marginTop: 20,
   },
   messageText: {
     fontSize: 16,
@@ -67,7 +75,7 @@ const styles = StyleSheet.create({
     fontFamily: "NeueBold",
   },
   editNumber: {
-    color: "#007AFF",
+    color: "#F6671E",
     marginTop: 8,
     fontSize: 16,
     fontFamily: "Neue",
@@ -91,8 +99,8 @@ const styles = StyleSheet.create({
     right: 20,
   },
   continueButton: {
-    width: 50,
-    height: 50,
+    width: 80,
+    height: 40,
     backgroundColor: "#F5F5F5",
     borderRadius: 25,
     justifyContent: "center",
