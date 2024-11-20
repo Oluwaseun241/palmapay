@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { router } from "expo-router";
 import { ArrowLeft } from "lucide-react-native";
-import PhoneInput from "react-native-phone-number-input";
+import { FontAwesome6 } from "@expo/vector-icons";
 import {
   View,
   Text,
   TextInput,
   TouchableOpacity,
   SafeAreaView,
+  Image,
 } from "react-native";
 
 export default function PhoneNumberInput() {
+  const [phoneNumber, setPhoneNumber] = useState("");
+
   return (
     <SafeAreaView className="flex-1 bg-white">
       <View className="px-4 pt-4 flex-1">
@@ -20,64 +23,57 @@ export default function PhoneNumberInput() {
         </TouchableOpacity>
 
         {/* Header */}
-        <Text className="text-[28px] text-[#333333] font-semibold mb-2">
+        <Text className="text-[28px] font-NeueBold text-[#333333] font-semibold mb-2">
           Input Phone Number
         </Text>
-        <Text className="text-base text-gray-500 mb-8">
+        <Text className="text-[13px] leading-[15.27px] font-Neue max-w-[225px] text-[#5F5F5F] mb-8">
           We'll send you a verification code to make sure it's your phone
           number.
         </Text>
 
-        {/* Phone Input */}
         <View className="mb-auto">
-          <PhoneInput
-            defaultCode="NG"
-            layout="first"
-            containerStyle={{
-              width: "100%",
-              backgroundColor: "transparent",
-            }}
-            textContainerStyle={{
-              backgroundColor: "transparent",
-              paddingVertical: 0,
-              borderBottomWidth: 1,
-              borderBottomColor: "#E5E5E5",
-            }}
-            textInputStyle={{
-              fontSize: 16,
-              color: "#333",
-            }}
-            codeTextStyle={{
-              fontSize: 16,
-              color: "#333",
-            }}
-            flagButtonStyle={{
-              width: 50,
-            }}
-            countryPickerButtonStyle={{
-              width: 50,
-            }}
-          />
+          <View className="flex-row-reverse items-center bg-white rounded-[16px] border-[0.5px] py-[26px] px-[14.5px] border-[#0000004A]">
+            {/* Flag and Dropdown */}
+            <TouchableOpacity className="flex-row items-center mr-2">
+              <View className="w-6 h-4 mr-1">
+                <View className="w-full h-full bg-[#008751]" />
+                <View className="w-2 h-full bg-white absolute right-0" />
+              </View>
+              <Text className="text-[#2ED981] ml-1">▼</Text>
+            </TouchableOpacity>
+
+            {/* Phone Input */}
+            <TextInput
+              placeholder="Phone Number"
+              value={phoneNumber}
+              onChangeText={setPhoneNumber}
+              keyboardType="phone-pad"
+              className="flex-1 text-[13px] text-black leading-[15.27px] font-Neue"
+              placeholderTextColor="#878787"
+            />
+          </View>
         </View>
 
-        {/* Terms and Continue Section */}
-        <View className="mb-8">
-          {/* Terms */}
-          <Text className="text-center text-xs text-gray-500 mb-6">
-            By continuing, you accept our{" "}
-            <Text className="text-gray-700 font-semibold">
-              Terms of Service
-            </Text>{" "}
+        <View className="flex-row items-center justify-between mb-8">
+          <Text className="text-[12px] leading-[14.4px] font-Neue text-[#5F5F5F]">
+            By continuing, you accept our{"\n"}
+            <Text className="text-[rgb(95,95,95)] font-NeueBold">
+              Terms of Service{" "}
+            </Text>
             and{" "}
-            <Text className="text-gray-700 font-semibold">Privacy Policy</Text>
+            <Text className="text-[#5F5F5F] font-NeueBold">Privacy Policy</Text>
           </Text>
 
-          {/* Continue Button */}
-          <TouchableOpacity className="self-center bg-gray-100 rounded-full w-14 h-14 items-center justify-center">
-            <View className="bg-[#FFC801] rounded-full w-10 h-10 items-center justify-center">
-              <Text className="text-2xl text-white">→</Text>
-            </View>
-          </TouchableOpacity>
+          <View className="flex-row justify-around">
+            <View />
+            <View />
+            <TouchableOpacity
+              onPress={() => router.navigate("/onboarding/welcome-2")}
+              className="p-2 bg-[#C8C8C854] w-24 h-12 items-center rounded-full"
+            >
+              <FontAwesome6 name="arrow-right-long" size={24} color="#FFC801" />
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </SafeAreaView>
