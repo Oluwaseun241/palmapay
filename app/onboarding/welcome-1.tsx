@@ -1,12 +1,6 @@
 import React from "react";
 
-import {
-  ImageBackground,
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { ImageBackground, Text, TouchableOpacity, View } from "react-native";
 import Hand from "@/assets/images/hand1.svg";
 import Logo from "@/assets/images/icon.svg";
 import { FontAwesome6 } from "@expo/vector-icons";

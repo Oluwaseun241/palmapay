@@ -21,8 +21,7 @@ export default function SigninForm() {
   return (
     <View>
       {/* Email/Phone Number Section */}
-      <View>
-        <Text className="mb-1 text-[#878787]">Your Email</Text>
+      <View className="mt-5">
         <TextInput
           placeholder="First Name"
           placeholderTextColor="#878787"
@@ -32,8 +31,7 @@ export default function SigninForm() {
         />
       </View>
       {/* Password */}
-      <View>
-        <Text className="mb-1 text-[#878787]">Create Password</Text>
+      <View className="mt-3">
         <View className="relative">
           <TextInput
             placeholder="Create Password"
@@ -57,27 +55,27 @@ export default function SigninForm() {
           </TouchableOpacity>
         </View>
       </View>
-      <View>
-        <Text>Forgot Password?</Text>
+      <View className="mt-4">
+        <Text className="text-[#F6671E]">Forgot Password?</Text>
       </View>
-      <View className="flex-row">
-        <TouchableOpacity
-          onPress={() => router.navigate("/signup/bio-data")}
-          className="bg-[#FFC801]/10 rounded-[16px] py-4 mt-6 mb-4"
-        >
-          <Text className="text-center text-black font-bold text-lg">
-            SignUp
-          </Text>
-        </TouchableOpacity>
 
-        <TouchableOpacity
-          //onPress={handleSubmit}
-          className="bg-[#FFC801]/10 rounded-[16px] py-4 mt-6 mb-4"
-        >
-          <Text className="text-center text-black font-bold text-lg">
-            <FontAwesome6 name="arrow-right-long" size={24} color="#000000" />
-          </Text>
-        </TouchableOpacity>
+      <View className="">
+        <View className="flex-row justify-between px-4 py-4 mt-6">
+          <TouchableOpacity
+            onPress={() => router.navigate("/signup/bio-data")}
+            className="bg-[#FFFFFF] p-2"
+          >
+            <Text className="text-center text-[#FFC801] font-bold text-lg">
+              Sign Up
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => router.navigate("/signin/pin")}
+            className="bg-[#C8C8C854] w-[78px] rounded-full p-2 items-center"
+          >
+            <FontAwesome6 name="arrow-right-long" size={24} color="#FFC801" />
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
