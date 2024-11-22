@@ -7,14 +7,23 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Link, router } from "expo-router";
-import { ArrowLeft } from "@/components/svgs";
-import { FontAwesome6 } from "@expo/vector-icons";
+import { FontAwesome6, Ionicons } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function VerifyCode() {
+  const completeOnboarding = async () => {
+    try {
+      await AsyncStorage.setItem("onboardingComplete", "true");
+      router.navigate("/signin");
+    } catch (error) {
+      console.log("Error saving onboarding state:", error);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => router.back()} className="mb-6">
-        <ArrowLeft />
+        <Ionicons name="chevron-back-sharp" size={24} color="black" />
       </TouchableOpacity>
 
       <View style={styles.messageContainer}>
@@ -38,7 +47,7 @@ export default function VerifyCode() {
       {/* Continue Button */}
       <View style={styles.buttonContainer}>
         <TouchableOpacity
-          onPress={() => router.navigate("/signin")}
+          onPress={completeOnboarding}
           style={styles.continueButton}
         >
           <FontAwesome6 name="arrow-right-long" size={24} color="#C59A00" />

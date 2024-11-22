@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import { router } from "expo-router";
-import { ArrowLeft } from "@/components/svgs";
 import {
   View,
   Text,
@@ -12,7 +11,7 @@ import {
   ActivityIndicator,
 } from "react-native";
 import countries from "country-list";
-import { FontAwesome6 } from "@expo/vector-icons";
+import { FontAwesome6, Ionicons } from "@expo/vector-icons";
 
 interface Country {
   code: string;
@@ -96,7 +95,7 @@ export default function PhoneNumberInput() {
     <SafeAreaView className="flex-1 bg-white">
       <View className="px-4 pt-4 flex-1">
         <TouchableOpacity onPress={() => router.back()} className="mb-6">
-          <ArrowLeft />
+          <Ionicons name="chevron-back-sharp" size={24} color="black" />
         </TouchableOpacity>
 
         {/* Header */}

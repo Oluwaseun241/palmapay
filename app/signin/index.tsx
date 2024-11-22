@@ -1,7 +1,7 @@
 import React from "react";
 import { router } from "expo-router";
 import { SafeAreaView, View, TouchableOpacity, Text } from "react-native";
-import { ArrowLeft } from "@/components/svgs";
+import { Ionicons } from "@expo/vector-icons";
 import SigninForm from "@/components/SigninForm";
 
 export default function LoginScreen() {
@@ -9,7 +9,7 @@ export default function LoginScreen() {
     <SafeAreaView className="flex-1 bg-white">
       <View className="px-4 pt-4">
         <TouchableOpacity onPress={() => router.back()} className="mb-6">
-          <ArrowLeft />
+          <Ionicons name="chevron-back-sharp" size={24} color="black" />
         </TouchableOpacity>
         <View>
           <Text className="font-NeueBold text-[#5F5F5F] text-2xl">
