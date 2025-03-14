@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   SafeAreaView,
   View,
@@ -8,9 +8,29 @@ import {
 } from "react-native";
 import { router } from "expo-router";
 import Logo from "@/assets/images/login.svg";
+import FaceID from "@/assets/icons/faceId.svg";
+import Back from "@/assets/icons/back.svg";
 import { Ionicons } from "@expo/vector-icons";
 
 export default function PinScreen() {
+  const [pin, setPin] = useState("");
+
+  const handlePress = (value) => {
+    if (pin.length < 4) {
+      setPin(pin + value);
+    }
+  };
+
+  const handleDelete = () => {
+    setPin(pin.slice(0, -1));
+  };
+
+  useEffect(() => {
+    if (pin.length === 4) {
+      setTimeout(() => router.push("/home"), 300);
+    }
+  }, [pin]);
+
   return (
     <SafeAreaView className="bg-white flex-1">
       <View className="px-4 pt-4">
@@ -26,28 +46,51 @@ export default function PinScreen() {
             Not you? <Text className="text-[#F6671E]">Log Out</Text>
           </Text>
         </View>
-        <View style={styles.codeContainer}>
+        {/* PIN Input Dots */}
+        <View className="flex-row justify-center mt-6 gap-14">
           {[...Array(4)].map((_, index) => (
-            <View key={index} style={styles.codeBox} />
+            <View
+              key={index}
+              className="w-14 h-14 border border-gray-300 rounded-lg flex items-center justify-center"
+            >
+              <Text className="text-3xl text-gray-700">
+                {pin[index] ? "•" : ""}
+              </Text>
+            </View>
+          ))}
+        </View>
+
+        {/* Keypad */}
+        <View className="mt-10">
+          {[
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9],
+            ["face", 0, "back"],
+          ].map((row, rowIndex) => (
+            <View key={rowIndex} className="flex-row justify-center mb-4">
+              {row.map((item, index) => (
+                <TouchableOpacity
+                  key={index}
+                  onPress={() => {
+                    if (typeof item === "number") handlePress(item);
+                    else if (item === "back") handleDelete();
+                  }}
+                  className="w-[150] h-[110] flex items-center justify-center"
+                >
+                  {item === "face" ? (
+                    <FaceID />
+                  ) : item === "back" ? (
+                    <Back />
+                  ) : (
+                    <Text className="text-2xl font-bold">{item}</Text>
+                  )}
+                </TouchableOpacity>
+              ))}
+            </View>
           ))}
         </View>
       </View>
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  codeContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: 40,
-    paddingHorizontal: 20,
-  },
-  codeBox: {
-    width: 50,
-    height: 50,
-    borderWidth: 1,
-    borderColor: "#E5E5E5",
-    borderRadius: 8,
-  },
-});

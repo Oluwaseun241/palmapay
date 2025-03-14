@@ -7,7 +7,7 @@ import SigninForm from "@/components/SigninForm";
 export default function LoginScreen() {
   return (
     <SafeAreaView className="flex-1 bg-white">
-      <View className="px-4 pt-4">
+      <View className="flex-1 px-4 pt-4">
         <TouchableOpacity onPress={() => router.back()} className="mb-6">
           <Ionicons name="chevron-back-sharp" size={24} color="black" />
         </TouchableOpacity>
@@ -19,7 +19,9 @@ export default function LoginScreen() {
             Please sign in here to your account.
           </Text>
         </View>
-        <SigninForm />
+        <View className="flex-grow">
+          <SigninForm />
+        </View>
       </View>
     </SafeAreaView>
   );
