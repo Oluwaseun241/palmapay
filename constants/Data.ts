@@ -47,7 +47,7 @@ export const accountData: Record<string, Account> = {
         type: "Software system",
         amount: "- 34.00 USD",
         time: "21.02.21",
-        icon: require("@/assets/icons/adobe.svg"),
+        icon: require("@/assets/icons/adobe.png"),
       },
     ],
   },

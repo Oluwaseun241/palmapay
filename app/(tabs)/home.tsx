@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
   ScrollView,
+  Pressable,
 } from "react-native";
 import Logo from "@/assets/images/login.svg";
 import Trend from "@/assets/icons/trend.svg";
@@ -15,6 +16,12 @@ import ArrowDown from "@/assets/icons/arrow-down.svg";
 import Wallet from "@/assets/icons/wallet.svg";
 import ArrowRight from "@/assets/icons/arrow-right.svg";
 import More from "@/assets/icons/more.svg";
+import {
+  FontAwesome5,
+  Ionicons,
+  FontAwesome,
+  MaterialIcons,
+} from "@expo/vector-icons";
 
 import { accountData } from "@/constants/Data";
 
@@ -68,16 +75,16 @@ export default function HomeScreen() {
           <Text className="text-2xl font-NeueBold">₦8,605,053.53</Text>
 
           {/* Bank Cards Stack */}
-          <View className="relative mt-2">
+          <View className="relative mt-4">
             {/* Back Card (Most Faded) */}
-            <View className="absolute top-8 left-0 w-full p-6 rounded-xl bg-yellow-200 opacity-60 z-10"></View>
+            <View className="absolute top-0 left-0 w-full p-6 rounded-xl bg-[#FFC8015C] opacity-60 z-10"></View>
 
             {/* Middle Card (Less Faded) */}
-            <View className="absolute top-2 left-0 w-full p-6 rounded-xl bg-yellow-300 opacity-80 z-20"></View>
+            <View className="absolute top-2 left-0 w-full p-6 rounded-xl bg-[#FFC80187] opacity-80 z-20"></View>
 
             {/* Bank Card */}
             <View
-              className={`p-6 mt-4 mb-2 rounded-xl bg-yellow-400 flex-row items-center justify-center z-30`}
+              className={`p-6 mt-4 mb-2 rounded-xl bg-[#FFC801] flex-row items-center justify-center z-30`}
             >
               <View className="flex-row items-center">
                 <Image
@@ -124,7 +131,7 @@ export default function HomeScreen() {
           {accountData[currency].transactions.map((transaction, index) => (
             <View
               key={index}
-              className="bg-white p-4 rounded-lg mt-6 flex-row items-center shadow"
+              className="bg-white p-6 rounded-lg mt-8 flex-row items-center shadow"
             >
               <Image source={transaction.icon} className="w-10 h-10 mr-4" />
               <View className="flex-1">
@@ -138,6 +145,40 @@ export default function HomeScreen() {
             </View>
           ))}
         </ScrollView>
+      </View>
+
+      {/* Bottom */}
+      <View className="mt-8 px-4 flex-row items-center justify-between">
+        <Pressable>
+          <View className="p-6 w-[73] h-[73] rounded-full bg-[#5237F626]">
+            <FontAwesome name="send" size={24} color="#9685FF" />
+          </View>
+
+          <Text className="mt-3 text-center font-Neue">Request</Text>
+        </Pressable>
+
+        <Pressable>
+          <View className="p-7 w-[73] h-[73] rounded-full bg-[#32BA7726]">
+            <MaterialIcons name="wallet" size={24} color="#32BA77" />
+          </View>
+
+          <Text className="mt-3 text-center font-Neue">Bills</Text>
+        </Pressable>
+
+        <Pressable>
+          <View className="p-7 w-[73] h-[73] items-center rounded-full bg-[#EB963F26]">
+            <Ionicons name="pricetag" size={24} color="#FF4F00" />
+          </View>
+
+          <Text className="mt-3 text-center font-Neue">Resturants</Text>
+        </Pressable>
+
+        <Pressable>
+          <View className="p-7 w-[73] h-[73] rounded-full bg-[#EB963F26]">
+            <FontAwesome5 name="car" size={24} color="#EB963F" />
+          </View>
+          <Text className="mt-3 text-center font-Neue">Rides</Text>
+        </Pressable>
       </View>
     </SafeAreaView>
   );

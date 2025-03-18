@@ -1,6 +1,7 @@
 import React from "react";
 import SignupForm from "@/components/SignupForm";
 import { SafeAreaView, View, Text, ScrollView } from "react-native";
+import { router } from "expo-router";
 
 export default function BiodataScreen() {
   return (
@@ -23,7 +24,13 @@ export default function BiodataScreen() {
 
           <View className="mb-6">
             <Text className="text-[#5F5F5F] leading-[14.1px] font-Neue text-sm">
-              Have an account? <Text className="text-[#F6671E]">Login</Text>
+              Have an account?
+              <Text
+                onPress={() => router.navigate("/signin")}
+                className="text-[#F6671E]"
+              >
+                Login
+              </Text>
             </Text>
           </View>
 
