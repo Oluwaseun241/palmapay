@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  SafeAreaView,
-  View,
-  TouchableOpacity,
-  Text,
-  StyleSheet,
-} from "react-native";
+import { SafeAreaView, View, TouchableOpacity, Text } from "react-native";
 import { router } from "expo-router";
 import Logo from "@/assets/images/login.svg";
 import FaceID from "@/assets/icons/faceId.svg";
@@ -15,7 +9,7 @@ import { Ionicons } from "@expo/vector-icons";
 export default function PinScreen() {
   const [pin, setPin] = useState("");
 
-  const handlePress = (value) => {
+  const handlePress = (value: number) => {
     if (pin.length < 4) {
       setPin(pin + value);
     }
