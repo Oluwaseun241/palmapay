@@ -220,7 +220,7 @@ export default function SignupForm() {
         className="bg-[#FFC801]/10 rounded-[16px] py-4 mt-6 mb-4"
       >
         <Text className="text-center text-black font-bold text-lg">
-          <FontAwesome6 name="arrow-right-long" size={24} color="#000000" />
+          <FontAwesome6 name="arrow-right-long" size={24} color="#FFC801" />
         </Text>
       </TouchableOpacity>
     </View>

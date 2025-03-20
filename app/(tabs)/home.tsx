@@ -24,6 +24,7 @@ import {
 } from "@expo/vector-icons";
 
 import { accountData } from "@/constants/Data";
+import { router } from "expo-router";
 
 export default function HomeScreen() {
   const [activeTab, setActiveTab] = useState("Accounts");
@@ -149,7 +150,7 @@ export default function HomeScreen() {
 
       {/* Bottom */}
       <View className="mt-8 px-4 flex-row items-center justify-between">
-        <Pressable>
+        <Pressable onPress={() => router.push("/request")}>
           <View className="p-6 w-[73] h-[73] rounded-full bg-[#5237F626]">
             <FontAwesome name="send" size={24} color="#9685FF" />
           </View>
@@ -170,7 +171,7 @@ export default function HomeScreen() {
             <Ionicons name="pricetag" size={24} color="#FF4F00" />
           </View>
 
-          <Text className="mt-3 text-center font-Neue">Resturants</Text>
+          <Text className="mt-3 text-center font-Neue">Restaurants</Text>
         </Pressable>
 
         <Pressable>

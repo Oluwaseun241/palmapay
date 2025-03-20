@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Animated, SafeAreaView } from "react-native";
+import { Animated, SafeAreaView, StatusBar } from "react-native";
 import Icon from "@/assets/images/icon.svg";
 
 export default function CustomSplashScreen() {
@@ -37,6 +37,7 @@ export default function CustomSplashScreen() {
 
   return (
     <SafeAreaView className="flex-1 flex-row gap-3 bg-primary items-center justify-center">
+      <StatusBar backgroundColor="#00000" />
       <Animated.View
         style={{
           opacity: imageFadeAnim,

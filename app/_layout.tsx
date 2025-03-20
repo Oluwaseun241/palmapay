@@ -11,10 +11,13 @@ import React, { useEffect, useState } from "react";
 import * as SplashScreen from "expo-splash-screen";
 import CustomSplashScreen from "@/components/Splash";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import { StatusBar } from "react-native";
 
 export default function RootLayout() {
   const [loaded, setLoaded] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
   const colorScheme = useColorScheme();
+
   let [fontsLoaded] = useFonts({
     Neue: require("@/assets/fonts/neue/NeueMontreal-Regular.otf"),
     NeueBold: require("@/assets/fonts/neue/NeueMontreal-Bold.otf"),
@@ -24,24 +27,28 @@ export default function RootLayout() {
     const loadApp = async () => {
       if (fontsLoaded) {
         await SplashScreen.hideAsync();
-        setLoaded(true);
+        setTimeout(() => {
+          setShowSplash(false);
+          setLoaded(true);
+        }, 5000);
       }
     };
 
     loadApp();
   }, [fontsLoaded]);
 
-  if (!loaded) {
+  if (showSplash) {
     return <CustomSplashScreen />;
   }
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="onboarding" options={{ headerShown: false }} />
-        <Stack.Screen name="signup" options={{ headerShown: false }} />
-        <Stack.Screen name="signin" options={{ headerShown: false }} />
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <StatusBar backgroundColor="#00000" />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="onboarding" />
+        <Stack.Screen name="signup" />
+        <Stack.Screen name="signin" />
+        <Stack.Screen name="(tabs)" />
       </Stack>
     </ThemeProvider>
   );

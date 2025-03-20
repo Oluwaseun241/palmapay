@@ -11,14 +11,6 @@ const checkOnboarding = async () => {
   }
 };
 
-const completeOnboarding = async () => {
-  try {
-    await AsyncStorage.setItem("onboardingComplete", "true");
-  } catch (error) {
-    console.log("Error saving onboarding state:", error);
-  }
-};
-
 export default function TabLayout() {
   return (
     <Stack

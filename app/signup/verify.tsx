@@ -1,16 +1,42 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import {
   View,
   Text,
+  TextInput,
   Pressable,
-  StyleSheet,
   TouchableOpacity,
+  SafeAreaView,
 } from "react-native";
-import { Link, router } from "expo-router";
-import { FontAwesome6, Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function VerifyCode() {
+  const [code, setCode] = useState(["", "", "", ""]);
+  const inputsRef = useRef<(TextInput | null)[]>([]);
+
+  const handleChange = (text: string, index: number) => {
+    if (text.length > 1) text = text.charAt(0);
+    const newCode = [...code];
+    newCode[index] = text;
+    setCode(newCode);
+
+    // Move to next input field if available
+    if (text && index < inputsRef.current.length - 1) {
+      inputsRef.current[index + 1]?.focus();
+    }
+
+    if (newCode.join("").length === 4) {
+      completeOnboarding();
+    }
+  };
+
+  const handleKeyPress = (e: any, index: number) => {
+    if (e.nativeEvent.key === "Backspace" && !code[index] && index > 0) {
+      inputsRef.current[index - 1]?.focus();
+    }
+  };
+
   const completeOnboarding = async () => {
     try {
       await AsyncStorage.setItem("onboardingComplete", "true");
@@ -21,102 +47,42 @@ export default function VerifyCode() {
   };
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={() => router.back()} className="mb-6">
-        <Ionicons name="chevron-back-sharp" size={24} color="black" />
-      </TouchableOpacity>
-
-      <View style={styles.messageContainer}>
-        <Text style={styles.messageText}>
-          A code was sent to the number{"\n"}
-          ending with <Text style={styles.boldText}>3442</Text>
-        </Text>
-
-        <Pressable onPress={() => router.back()}>
-          <Text style={styles.editNumber}>Edit Phone number</Text>
-        </Pressable>
-      </View>
-
-      {/* Code Input Boxes */}
-      <View style={styles.codeContainer}>
-        {[...Array(4)].map((_, index) => (
-          <View key={index} style={styles.codeBox} />
-        ))}
-      </View>
-
-      {/* Continue Button */}
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          onPress={completeOnboarding}
-          style={styles.continueButton}
-        >
-          <FontAwesome6 name="arrow-right-long" size={24} color="#C59A00" />
+    <SafeAreaView className="flex-1 bg-white">
+      <View className="pt-4 px-5">
+        <TouchableOpacity onPress={() => router.back()} className="mb-3">
+          <Ionicons name="chevron-back-sharp" size={24} color="black" />
         </TouchableOpacity>
+
+        <View className="mt-5">
+          <Text className="font-Neue text-lg">
+            A code was sent to the number{"\n"}
+            ending with <Text className="font-NeueBold">3442</Text>
+          </Text>
+
+          <Pressable onPress={() => router.back()}>
+            <Text className="font-Neue text-[#F6671E] mt-2 text-lg">
+              Edit Phone number
+            </Text>
+          </Pressable>
+        </View>
+
+        {/* Code Input Boxes */}
+        <View className="flex-row justify-between mt-10 px-5">
+          {code.map((value, index) => (
+            <TextInput
+              className="w-16 h-16 border border-[#E5E5E5] text-center text-3xl rounded-lg"
+              key={index}
+              ref={(el) => (inputsRef.current[index] = el)}
+              keyboardType="number-pad"
+              maxLength={1}
+              value={value}
+              onChangeText={(text) => handleChange(text, index)}
+              onKeyPress={(e) => handleKeyPress(e, index)}
+              autoFocus={index === 0}
+            />
+          ))}
+        </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    paddingTop: 60,
-    paddingHorizontal: 20,
-  },
-  backButton: {
-    position: "absolute",
-    top: 60,
-    left: 20,
-  },
-  backButtonText: {
-    fontSize: 24,
-  },
-  messageContainer: {
-    marginTop: 20,
-  },
-  messageText: {
-    fontSize: 16,
-    lineHeight: 24,
-    fontFamily: "Neue",
-  },
-  boldText: {
-    fontFamily: "NeueBold",
-  },
-  editNumber: {
-    color: "#F6671E",
-    marginTop: 8,
-    fontSize: 16,
-    fontFamily: "Neue",
-  },
-  codeContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: 40,
-    paddingHorizontal: 20,
-  },
-  codeBox: {
-    width: 50,
-    height: 50,
-    borderWidth: 1,
-    borderColor: "#E5E5E5",
-    borderRadius: 8,
-  },
-  buttonContainer: {
-    position: "absolute",
-    bottom: 40,
-    right: 20,
-  },
-  continueButton: {
-    width: 80,
-    height: 40,
-    backgroundColor: "#F5F5F5",
-    borderRadius: 25,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  continueButtonText: {
-    fontSize: 20,
-    color: "#000",
-  },
-});

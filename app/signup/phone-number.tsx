@@ -166,7 +166,7 @@ export default function PhoneNumberInput() {
                   <FontAwesome6
                     name="arrow-right-long"
                     size={24}
-                    color="#C59A00"
+                    color="#FFC801"
                   />
                 </TouchableOpacity>
               </View>
